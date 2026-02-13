@@ -12,27 +12,43 @@
 
 .container{
     position: relative;
-    width: 1140px;
+    width: 100%;
     margin: 0 auto;
     min-height: 100vh;
     padding: 2rem;
-    background-color: #fff;
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .greeting{
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #000;
     font-weight: 600;
     font-family: Cormorant;
     font-style: italic;
 }
 
+.name{
+    color: #795EF1;
+    font-weight: 900;
+    font-family: Cormorant;
+}
+
 h1{
     font-family: Manrope;
+    font-size: 5rem;
+    font-weight: 800;
+    color: #3f3f3f;
+    letter-spacing: -4px;
+    line-height: 5rem;
+    text-align: center;
 }
 
 
