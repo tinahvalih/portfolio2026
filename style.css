@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Outfit:wght@100..900&family=Sora:wght@100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Manrope:wght@200..800&family=Outfit:wght@100..900&family=Sora:wght@100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Manrope;
+    scroll-behavior: smooth;
+
+}
+
+.container{
+    position: relative;
+    width: 1140px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.greeting{
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 600;
+    font-family: Cormorant;
+    font-style: italic;
+}
+
+h1{
+    font-family: Manrope;
+}
+
+
+
+
