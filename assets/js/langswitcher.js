@@ -50,6 +50,7 @@ const navMenu = document.querySelector('.nav-menu');
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('img');
 const projectsList = document.getElementById('projects-list');
+const projectCursor = document.getElementById('project-cursor');
 
 const projects = [
     {
@@ -114,6 +115,33 @@ function renderProjects() {
 }
 
 renderProjects();
+
+function setupProjectCursor() {
+    if (!window.matchMedia('(pointer: fine)').matches) {
+        return;
+    }
+
+    document.querySelectorAll('.project-card').forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+            projectCursor.classList.add('is-visible');
+        });
+
+        card.addEventListener('mousemove', (event) => {
+            projectCursor.style.left = `${event.clientX}px`;
+            projectCursor.style.top = `${event.clientY}px`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            projectCursor.classList.remove('is-visible');
+        });
+
+        card.addEventListener('focus', () => {
+            projectCursor.classList.remove('is-visible');
+        });
+    });
+}
+
+setupProjectCursor();
 
 function applyTheme(theme) {
     const isDark = theme === 'dark';

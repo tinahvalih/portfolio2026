@@ -467,7 +467,12 @@ h1 {
 }
 
 .projects-intro {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: clamp(300px, 32vw, 600px);
     padding-top: clamp(8px, 3vw, 54px);
+    text-align: center;
 }
 
 .projects-intro h2 {
@@ -479,7 +484,13 @@ h1 {
 }
 
 .projects-intro .gradient-word {
+    display: inline-block;
     line-height: 0.9;
+}
+
+.projects-title-accent {
+    transform: rotate(-4.3deg);
+    transform-origin: center;
 }
 
 .projects-list {
@@ -489,6 +500,7 @@ h1 {
 .project-card {
     display: block;
     color: var(--text-primary);
+    cursor: none;
     outline: 0;
 }
 
@@ -511,7 +523,7 @@ h1 {
 
 .project-card:hover .project-preview,
 .project-card:focus-visible .project-preview {
-    transform: rotate(var(--project-hover-rotation, 0deg)) translateY(-4px);
+    transform: rotate(var(--project-hover-rotation, 0deg)) translateY(-4px) scale(1.01);
 }
 
 .project-preview img {
@@ -589,6 +601,9 @@ h1 {
 }
 
 .project-see-label {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 100;
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -597,10 +612,44 @@ h1 {
     padding: 24px;
     color: var(--white);
     font-size: clamp(28px, 3vw, 54px);
-    font-weight: 800;
     letter-spacing: -0.06em;
     text-align: center;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
+}
+
+.project-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 112px;
+    padding: 18px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.72);
+    transition: opacity 160ms ease, transform 180ms var(--ease);
+    will-change: transform;
+}
+
+.project-cursor.is-visible {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+:root[data-theme="dark"] .project-cursor {
+    background: var(--white);
+    color: var(--dark);
 }
 
 @media (max-width: 1180px) {
@@ -615,6 +664,7 @@ h1 {
 
     .projects-intro {
         grid-column: 1 / -1;
+        min-height: auto;
         padding-top: 0;
     }
 }
@@ -719,6 +769,14 @@ h1 {
     .project-preview {
         border-width: 5px;
         border-radius: 10px;
+    }
+
+    .project-card {
+        cursor: pointer;
+    }
+
+    .project-cursor {
+        display: none;
     }
 }
 

@@ -1,6 +1,12 @@
 CHANGELOG
 
 2026-06-29 - evening
+- Added a custom circular cursor on project card hover.
+
+2026-06-29 - evening
+- Centered the project section title like a card and rotated the pixel-perfect text.
+
+2026-06-29 - evening
 - Realigned the desktop hero headline and CV button on the same row.
 
 2026-06-29 - evening
