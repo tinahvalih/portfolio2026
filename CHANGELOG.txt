@@ -1,0 +1,10 @@
+CHANGELOG
+
+2026-06-29 - mid-afternoon
+- Redesigned the landing page hero to match the provided visual direction.
+- Integrated the header directly into index.html.
+- Added the fluid gradient hero asset, Figma badge asset, logo, and social icons.
+- Applied the requested dark text color and purple-to-pink-to-orange text gradient.
+- Added Manrope from Google Fonts.
+- Reworked the CV button so it uses normal layout flow instead of absolute positioning.
+
