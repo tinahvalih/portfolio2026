@@ -1,6 +1,43 @@
 CHANGELOG
 
 2026-06-29 - evening
+- Added the footer, translated remaining visible text, and integrated the legal notice as an in-page modal.
+- Removed the mobile hamburger menu open animation.
+
+2026-06-29 - evening
+- Added autoplay hover video preview for the EmitVerse project card.
+
+2026-06-29 - evening
+- Fixed the mobile hero headline wrapping and Figma badge sizing.
+
+2026-06-29 - evening
+- Connected award rows to the provided award image files.
+
+2026-06-29 - evening
+- Added all award entries as dynamic rows.
+
+2026-06-29 - evening
+- Replaced the award location pin with the provided location icon asset.
+
+2026-06-29 - evening
+- Replaced the award image magnet with a cursor-following hover light effect.
+
+2026-06-29 - evening
+- Reworked the award image magnet effect so it eases toward the cursor.
+
+2026-06-29 - evening
+- Added a subtle magnetic cursor reaction to the award image.
+
+2026-06-29 - evening
+- Adjusted the awards row height and allowed the award image to overflow outside the row.
+
+2026-06-29 - evening
+- Added the awards section with flipped separator, overlay title, and hover reveal interaction.
+
+2026-06-29 - evening
+- Added Lenis smooth scrolling with reduced-motion support.
+
+2026-06-29 - evening
 - Added a custom circular cursor on project card hover.
 
 2026-06-29 - evening

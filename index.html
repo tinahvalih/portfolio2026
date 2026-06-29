@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=15">
+    <link rel="stylesheet" href="assets/css/style.css?v=28">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -18,9 +18,9 @@
             </a>
 
             <div class="nav-menu" id="nav-menu">
-                <a href="#apropos" class="nav-link" data-i18n="nav_about">Aa Propos</a>
+                <a href="#apropos" class="nav-link" data-i18n="nav_about">A propos</a>
                 <a href="#realisations" class="nav-link nav-link--feature" data-i18n="nav_projects">Mes Realisations</a>
-                <a href="#expertises" class="nav-link" data-i18n="nav_skills">Eexpertises</a>
+                <a href="#expertises" class="nav-link" data-i18n="nav_skills">Expertises</a>
             </div>
 
             <div class="nav-actions">
@@ -98,20 +98,73 @@
             <div class="projects-layout">
                 <header class="projects-intro">
                     <h2 id="projects-title">
-                        Quelques<br>
-                        selection<br>
-                        de projets<br>
-                        <span class="gradient-word projects-title-accent">pixel-perfect</span>
+                        <span data-i18n="projects_title_one">Quelques</span><br>
+                        <span data-i18n="projects_title_two">selection</span><br>
+                        <span data-i18n="projects_title_three">de projets</span><br>
+                        <span class="gradient-word projects-title-accent" data-i18n="projects_title_accent">pixel-perfect</span>
                     </h2>
                 </header>
 
                 <div class="projects-list" id="projects-list"></div>
             </div>
         </section>
+
+        <section class="awards-section" id="distinctions" aria-labelledby="awards-title">
+            <div class="awards-separator" aria-hidden="true">
+                <img src="assets/images/section_separator.png" alt="">
+            </div>
+
+            <header class="awards-header">
+                <h2 id="awards-title">
+                    <span class="gradient-word awards-title-accent" data-i18n="awards_title_one">Distinctions</span>
+                    <span data-i18n="awards_title_two">&amp; prix</span>
+                </h2>
+            </header>
+
+            <div class="awards-list" id="awards-list"></div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div>
+                <p class="footer-location" data-i18n="footer_location">Paris, France, Terre</p>
+                <a class="footer-email" href="mailto:tinahvalih@gmail.com">tinahvalih@gmail.com</a>
+            </div>
+
+            <div class="footer-links">
+                <button class="legal-button" id="open-legal" type="button" data-i18n="footer_legal">Mentions Legales</button>
+                <div class="footer-socials" aria-label="Reseaux sociaux">
+                    <a href="https://www.linkedin.com/in/tinah-valiha/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <img src="assets/images/linkedin.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Dribbble">
+                        <img src="assets/images/dribbble.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/images/instagram.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/images/facebook.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="footer-signature" aria-label="Tinah Valiha">Tinah Valiha</p>
+    </footer>
+
+    <div class="legal-modal" id="legal-modal" aria-hidden="true">
+        <div class="legal-backdrop" data-close-legal></div>
+        <section class="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="legal-title" tabindex="-1">
+            <button class="legal-close" type="button" aria-label="Fermer" data-close-legal>&times;</button>
+            <div class="legal-content" id="legal-content"></div>
+        </section>
+    </div>
 
     <div class="project-cursor" id="project-cursor" aria-hidden="true">Voir le projet</div>
 
-    <script src="assets/js/langswitcher.js?v=15"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+    <script src="assets/js/langswitcher.js?v=28"></script>
 </body>
 </html>
