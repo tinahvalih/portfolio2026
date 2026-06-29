@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <link rel="stylesheet" href="assets/css/style.css?v=13">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -29,9 +29,9 @@
                     <span id="current-lang">FR</span>
                     <span class="chevron" aria-hidden="true"></span>
                 </button>
-                <a class="phone-button" href="mailto:contact@tinahvaliha.com" aria-label="Contacter Tinah Valiha">
-                    <span aria-hidden="true">&#9742;</span>
-                </a>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Passer en mode sombre" aria-pressed="false">
+                    <img src="assets/images/light.svg" alt="" aria-hidden="true">
+                </button>
                 <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
                     <span></span>
                     <span></span>
@@ -54,11 +54,13 @@
                     <h1 id="hero-title">
                         <span data-i18n="hero_line_one">Je design vos</span>
                         <span class="gradient-word" data-i18n="hero_gradient_word">interfaces</span><span>,</span><br>
-                        <span data-i18n="hero_line_two_before">et j'anime</span>
-                        <span class="figma-badge" aria-hidden="true">
-                            <img src="assets/images/figma_icon.png" alt="">
+                        <span class="hero-title-line">
+                            <span data-i18n="hero_line_two_before">et j'anime</span>
+                            <span class="figma-badge" aria-hidden="true">
+                                <img src="assets/images/figma_icon.png" alt="">
+                            </span>
+                            <span data-i18n="hero_line_two_after">vos idees</span>
                         </span>
-                        <span data-i18n="hero_line_two_after">vos idees</span>
                     </h1>
 
                     <a class="cv-button" href="https://drive.usercontent.google.com/download?id=1BlQhJMGmVArFH4RmaqZLzZIAeR77Xpj8&export=download&authuser=0&confirm=t&uuid=ba1c8375-b34a-4636-a61f-e8f847904a35&at=APcXIO0f0mxFizbxLISM9UZrHyJQ:1770991855672" target="_blank" rel="noreferrer">
@@ -87,8 +89,27 @@
                 </a>
             </div>
         </section>
+
+        <div class="section-separator" aria-hidden="true">
+            <img src="assets/images/section_separator.png" alt="">
+        </div>
+
+        <section class="projects-section" id="realisations" aria-labelledby="projects-title">
+            <div class="projects-layout">
+                <header class="projects-intro">
+                    <h2 id="projects-title">
+                        Quelques<br>
+                        selection<br>
+                        de projets<br>
+                        <span class="gradient-word">pixel-perfect</span>
+                    </h2>
+                </header>
+
+                <div class="projects-list" id="projects-list"></div>
+            </div>
+        </section>
     </main>
 
-    <script src="assets/js/langswitcher.js?v=6"></script>
+    <script src="assets/js/langswitcher.js?v=13"></script>
 </body>
 </html>

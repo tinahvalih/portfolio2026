@@ -25,7 +25,7 @@ const copy = {
     }
 };
 
-let currentLanguage = 'fr';
+let currentLanguage = localStorage.getItem('language') === 'en' ? 'en' : 'fr';
 
 function applyLanguage(language) {
     document.querySelectorAll('[data-i18n]').forEach((element) => {
@@ -42,15 +42,109 @@ function applyLanguage(language) {
 document.getElementById('switcher').addEventListener('click', () => {
     currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
     applyLanguage(currentLanguage);
+    localStorage.setItem('language', currentLanguage);
 });
 
 const burger = document.querySelector('.burger');
 const navMenu = document.querySelector('.nav-menu');
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('img');
+const projectsList = document.getElementById('projects-list');
+
+const projects = [
+    {
+        title: 'EmitVerse',
+        category: '3D, Video Game, Web design, Development',
+        image: 'assets/images/projects/emitverse.png'
+    },
+    {
+        title: 'RomeExchange',
+        category: 'UI & UX, Branding, Web design, Development',
+        image: 'assets/images/projects/romeExchange.png'
+    },
+    {
+        title: 'Bouclette.co',
+        category: 'UI & UX, Branding, Web design, Development',
+        image: 'assets/images/projects/boucletteco.png'
+    },
+    {
+        title: 'Abandonned CashPoint',
+        category: '3D, Texturing, Video Game Ready',
+        image: 'assets/images/projects/cashpoint.png'
+    },
+    {
+        title: 'LOVA',
+        category: '3D, Texturing, Video Game Ready Assets',
+        image: 'assets/images/projects/lovagame.png'
+    },
+    {
+        title: 'meko',
+        category: 'Branding, Logo',
+        image: 'assets/images/projects/mekobranding.png'
+    },
+    {
+        title: 'Voir plus...',
+        image: 'assets/images/projects/See_more.png',
+        seeMore: true
+    }
+];
+
+function renderProjects() {
+    const rotations = [-1.8, 2, 0];
+
+    projectsList.innerHTML = projects.map((project, index) => {
+        const rotation = rotations[index % rotations.length];
+        const hoverRotation = rotation === 0 ? rotations[(index + 1) % 2] : 0;
+        const cardClass = project.seeMore ? 'project-card project-card--see-more' : 'project-card';
+        const meta = project.seeMore
+            ? '<span class="project-see-label">Voir plus...</span>'
+            : `<div class="project-meta">
+                    <h3 class="project-title">${project.title}<span class="project-arrow" aria-hidden="true"></span></h3>
+                    <p class="project-category">${project.category}</p>
+                </div>`;
+
+        return `<article class="${cardClass}" tabindex="0" style="--project-rotation: ${rotation}deg; --project-hover-rotation: ${hoverRotation}deg;">
+                    <div class="project-preview">
+                        <img src="${project.image}" alt="${project.seeMore ? '' : project.title}">
+                        ${project.seeMore ? meta : ''}
+                    </div>
+                    ${project.seeMore ? '' : meta}
+                </article>`;
+    }).join('');
+}
+
+renderProjects();
+
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+
+    document.documentElement.dataset.theme = theme;
+    themeIcon.src = isDark ? 'assets/images/dark.svg' : 'assets/images/light.svg';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.setAttribute('aria-label', isDark ? 'Passer en mode clair' : 'Passer en mode sombre');
+    localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+applyTheme(savedTheme);
 
 burger.addEventListener('click', () => {
     const isOpen = navMenu.classList.toggle('open');
     burger.classList.toggle('open', isOpen);
     burger.setAttribute('aria-expanded', String(isOpen));
+});
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+
+    themeToggle.classList.remove('is-animating');
+    void themeToggle.offsetWidth;
+    themeToggle.classList.add('is-animating');
+    applyTheme(nextTheme);
+});
+
+themeToggle.addEventListener('animationend', () => {
+    themeToggle.classList.remove('is-animating');
 });
 
 document.querySelectorAll('.nav-link').forEach((link) => {

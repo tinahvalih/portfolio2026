@@ -1,5 +1,32 @@
 CHANGELOG
 
+2026-06-29 - evening
+- Realigned the desktop hero headline and CV button on the same row.
+
+2026-06-29 - evening
+- Improved hero headline responsiveness so the CV button and social links stay left-aligned on resized desktop views.
+
+2026-06-29 - evening
+- Updated project preview paths to use the assets/images/projects folder.
+
+2026-06-29 - evening
+- Added the dynamic project selection section with rotated preview cards and hover states.
+
+2026-06-29 - evening
+- Aligned the Figma icon vertically with the surrounding hero title text while keeping the line left-aligned.
+
+2026-06-29 - evening
+- Added the section separator image below the hero to prepare the next page section.
+
+2026-06-29 - evening
+- Saved the selected language in LocalStorage so it stays after refresh or browser restart.
+
+2026-06-29 - evening
+- Replaced the top-right phone CTA with the light/dark theme icon button.
+- Added a dark mode using #202241 as the page background.
+- Added a small theme-toggle animation and saved the selected theme in the browser.
+- Kept the existing gradient text treatment.
+
 2026-06-29 - mid-afternoon
 - Redesigned the landing page hero to match the provided visual direction.
 - Integrated the header directly into index.html.
@@ -7,4 +34,3 @@ CHANGELOG
 - Applied the requested dark text color and purple-to-pink-to-orange text gradient.
 - Added Manrope from Google Fonts.
 - Reworked the CV button so it uses normal layout flow instead of absolute positioning.
-
