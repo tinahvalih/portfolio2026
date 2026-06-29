@@ -1,17 +1,17 @@
 const copy = {
     fr: {
-        nav_about: 'A propos',
-        nav_projects: 'Mes realisations',
+        nav_about: 'À propos',
+        nav_projects: 'Mes réalisations',
         nav_skills: 'Expertises',
         hero_intro: 'Hello, je suis',
         hero_line_one: 'Je design vos',
         hero_gradient_word: 'interfaces',
         hero_line_two_before: "et j'anime",
-        hero_line_two_after: 'vos idees',
-        hero_copy: "Concepteur UI/UX et Graphique passionne, avec 5+ ans d'experience en visuels sociaux, interfaces web, 3D et montage video. Alliant precision technique et creativite pour des solutions sur mesure",
-        cv_label: 'Telecharger mon CV',
+        hero_line_two_after: 'vos idées',
+        hero_copy: "Concepteur UI/UX et graphique passionné, avec 5+ ans d'expérience en visuels sociaux, interfaces web, 3D et montage vidéo. Alliant précision technique et créativité pour des solutions sur mesure",
+        cv_label: 'Télécharger mon CV',
         projects_title_one: 'Quelques',
-        projects_title_two: 'selection',
+        projects_title_two: 'sélection',
         projects_title_three: 'de projets',
         projects_title_accent: 'pixel-perfect',
         projects_see_more: 'Voir plus...',
@@ -19,7 +19,7 @@ const copy = {
         awards_title_one: 'Distinctions',
         awards_title_two: '& prix',
         footer_location: 'Paris, France, Terre',
-        footer_legal: 'Mentions Legales',
+        footer_legal: 'Mentions Légales',
         legal_close: 'Fermer'
     },
     en: {
@@ -68,7 +68,7 @@ const projects = [
     {
         title: 'EmitVerse',
         category: {
-            fr: '3D, Jeu video, Web design, Developpement',
+            fr: '3D, Jeu vidéo, Web design, Développement',
             en: '3D, Video Game, Web design, Development'
         },
         image: 'assets/images/projects/emitverse.png',
@@ -77,7 +77,7 @@ const projects = [
     {
         title: 'RomeExchange',
         category: {
-            fr: 'UI & UX, Branding, Web design, Developpement',
+            fr: 'UI & UX, Branding, Web design, Développement',
             en: 'UI & UX, Branding, Web design, Development'
         },
         image: 'assets/images/projects/romeExchange.png'
@@ -85,7 +85,7 @@ const projects = [
     {
         title: 'Bouclette.co',
         category: {
-            fr: 'UI & UX, Branding, Web design, Developpement',
+            fr: 'UI & UX, Branding, Web design, Développement',
             en: 'UI & UX, Branding, Web design, Development'
         },
         image: 'assets/images/projects/boucletteco.png'
@@ -93,7 +93,7 @@ const projects = [
     {
         title: 'Abandonned CashPoint',
         category: {
-            fr: '3D, Texturing, Pret pour jeu video',
+            fr: '3D, Texturing, Prêt pour jeu vidéo',
             en: '3D, Texturing, Video Game Ready'
         },
         image: 'assets/images/projects/cashpoint.png'
@@ -101,7 +101,7 @@ const projects = [
     {
         title: 'LOVA',
         category: {
-            fr: '3D, Texturing, Assets prets pour jeu video',
+            fr: '3D, Texturing, Assets prêts pour jeu vidéo',
             en: '3D, Texturing, Video Game Ready Assets'
         },
         image: 'assets/images/projects/lovagame.png'
@@ -128,7 +128,7 @@ const awards = [
             en: 'Top of the Class'
         },
         event: {
-            fr: 'Remise de Diplome (Promotion ASCENDA)',
+            fr: 'Remise de Diplôme (Promotion ASCENDA)',
             en: 'Graduation Ceremony (ASCENDA Class)'
         },
         location: {
@@ -140,7 +140,7 @@ const awards = [
     {
         date: '2025',
         name: {
-            fr: '1ere place',
+            fr: '1ère place',
             en: '1st place'
         },
         event: {
@@ -188,7 +188,7 @@ const awards = [
     {
         date: '2023',
         name: {
-            fr: '1ere place',
+            fr: '1ère place',
             en: '1st place'
         },
         event: {
@@ -204,7 +204,7 @@ const awards = [
     {
         date: '2022',
         name: {
-            fr: '1ere place',
+            fr: '1ère place',
             en: '1st place'
         },
         event: {
