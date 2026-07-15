@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tinah Valiha</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=28">
+    <script>
+        document.documentElement.dataset.theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+        try {
+            if (sessionStorage.getItem('introPlayed') === 'true') {
+                document.documentElement.classList.add('intro-seen');
+            } else {
+                sessionStorage.setItem('introPlayed', 'true');
+            }
+        } catch (error) {
+            document.documentElement.classList.add('intro-seen');
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css?v=80">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 </head>
 <body>
+    <div class="intro-overlay" aria-hidden="true">
+        <div class="intro-square"></div>
+    </div>
+
     <header class="site-header">
         <nav class="nav" aria-label="Navigation principale">
             <a href="#" class="logo-link" aria-label="Tinah Valiha">
@@ -41,8 +54,64 @@
     </header>
 
     <main>
-        <section class="hero" aria-labelledby="hero-title">
-            <img class="hero-gradient" src="assets/images/hero_gradient_fluid.png" alt="" aria-hidden="true">
+        <section class="hero hero--new" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <div class="hero-copy-block">
+                    <p class="hero-eyebrow">
+                        <span data-i18n="hero_intro">Hello, je suis</span>
+                        <span class="editorial">Tinah Valiha</span>
+                    </p>
+
+                    <h1 id="hero-title">
+                        <span data-i18n="hero_line_one">Je donne vie</span><br>
+                        <span data-i18n="hero_line_two_before">&agrave; vos</span>
+                        <span class="gradient-word" data-i18n="hero_gradient_word">id&eacute;es</span>
+                    </h1>
+
+                    <p class="hero-copy" data-i18n="hero_copy">
+                        Concepteur UI/UX et Graphique passionn&eacute;, avec 5+ ans d'exp&eacute;rience en visuels sociaux, interfaces web, 3D et montage vid&eacute;o. Alliant pr&eacute;cision technique et cr&eacute;ativit&eacute; pour des solutions sur mesure
+                    </p>
+
+                    <a class="cv-button" href="https://drive.usercontent.google.com/download?id=1BlQhJMGmVArFH4RmaqZLzZIAeR77Xpj8&export=download&authuser=0&confirm=t&uuid=ba1c8375-b34a-4636-a61f-e8f847904a35&at=APcXIO0f0mxFizbxLISM9UZrHyJQ:1770991855672" target="_blank" rel="noreferrer">
+                        <span data-i18n="cv_label">T&eacute;l&eacute;charger mon CV</span>
+                        <span class="arrow" aria-hidden="true"></span>
+                    </a>
+
+                    <div class="social-links" aria-label="Reseaux sociaux">
+                        <a href="https://www.linkedin.com/in/tinah-valiha/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                            <img src="assets/images/linkedin.svg" alt="">
+                        </a>
+                        <a href="#" aria-label="Dribbble">
+                            <img src="assets/images/dribbble.svg" alt="">
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <img src="assets/images/instagram.svg" alt="">
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <img src="assets/images/facebook.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <img class="hero-portrait" src="assets/images/hero_tinahvaliha.png" alt="Tinah Valiha">
+
+                <div class="hero-skill-lockup" aria-label="Design, code, 3D">
+                    <p class="hero-skill-line">
+                        <span class="hero-skill-title-line">
+                            <span class="figma-badge" aria-hidden="true">
+                                <img src="assets/images/figma_icon.png" alt="">
+                            </span>
+                            <span data-i18n="hero_skill_design">design,</span>
+                        </span><br>
+                        <span class="gradient-word" data-i18n="hero_skill_code">code</span><span>,</span>
+                        <span data-i18n="hero_skill_3d">3D, ...</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero hero--legacy" aria-hidden="true" tabindex="-1">
+            <img class="hero-gradient" data-old-src="assets/images/hero_gradient_fluid.png" alt="" aria-hidden="true">
 
             <div class="hero-content">
                 <p class="hero-eyebrow">
@@ -90,6 +159,7 @@
             </div>
         </section>
 
+        <div class="scroll-layer projects-scroll-layer">
         <div class="section-separator" aria-hidden="true">
             <img src="assets/images/section_separator.png" alt="">
         </div>
@@ -108,6 +178,8 @@
                 <div class="projects-list" id="projects-list"></div>
             </div>
         </section>
+
+        </div>
 
         <section class="awards-section" id="distinctions" aria-labelledby="awards-title">
             <div class="awards-separator" aria-hidden="true">
@@ -151,7 +223,9 @@
             </div>
         </div>
 
-        <p class="footer-signature" aria-label="Tinah Valiha">Tinah Valiha</p>
+        <div class="footer-signature" aria-label="Tinah Valiha">
+            <img src="assets/images/TinahValiha_logo.svg" alt="Tinah Valiha">
+        </div>
     </footer>
 
     <div class="legal-modal" id="legal-modal" aria-hidden="true">
@@ -165,6 +239,18 @@
     <div class="project-cursor" id="project-cursor" aria-hidden="true">Voir le projet</div>
 
     <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-    <script src="assets/js/langswitcher.js?v=28"></script>
+    <script src="assets/js/app-state.js?v=65"></script>
+    <script src="assets/js/content-data.js?v=65"></script>
+    <script src="assets/js/i18n.js?v=65"></script>
+    <script src="assets/js/projects.js?v=65"></script>
+    <script src="assets/js/awards.js?v=65"></script>
+    <script src="assets/js/dynamic-content.js?v=65"></script>
+    <script src="assets/js/smooth-scroll.js?v=65"></script>
+    <script src="assets/js/legal-modal.js?v=65"></script>
+    <script src="assets/js/theme.js?v=65"></script>
+    <script src="assets/js/navbar.js?v=65"></script>
+    <script src="assets/js/section-parallax.js?v=65"></script>
+    <script src="assets/js/hero-animation.js?v=65"></script>
+    <script src="assets/js/main.js?v=65"></script>
 </body>
 </html>

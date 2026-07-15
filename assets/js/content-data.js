@@ -4,9 +4,12 @@ const copy = {
         nav_projects: 'Mes réalisations',
         nav_skills: 'Expertises',
         hero_intro: 'Hello, je suis',
-        hero_line_one: 'Je design vos',
-        hero_gradient_word: 'interfaces',
-        hero_line_two_before: "et j'anime",
+        hero_line_one: 'Je donne vie',
+        hero_gradient_word: 'idees',
+        hero_line_two_before: 'a vos',
+        hero_skill_design: 'design,',
+        hero_skill_code: 'code',
+        hero_skill_3d: '3D, ...',
         hero_line_two_after: 'vos idées',
         hero_copy: "Concepteur UI/UX et graphique passionné, avec 5+ ans d'expérience en visuels sociaux, interfaces web, 3D et montage vidéo. Alliant précision technique et créativité pour des solutions sur mesure",
         cv_label: 'Télécharger mon CV',
@@ -47,22 +50,30 @@ const copy = {
     }
 };
 
-let currentLanguage = localStorage.getItem('language') === 'en' ? 'en' : 'fr';
+Object.assign(copy.fr, {
+    nav_about: 'AaPropos',
+    nav_projects: 'Mes Realisations',
+    nav_skills: 'Expertises',
+    hero_line_one: 'Je donne vie',
+    hero_line_two_before: '\u00E0 vos',
+    hero_gradient_word: 'id\u00E9es',
+    hero_skill_design: 'design,',
+    hero_skill_code: 'code',
+    hero_skill_3d: '3D, ...',
+    hero_copy: "Concepteur UI/UX et Graphique passionn\u00E9, avec 5+ ans d'exp\u00E9rience en visuels sociaux, interfaces web, 3D et montage vid\u00E9o. Alliant pr\u00E9cision technique et cr\u00E9ativit\u00E9 pour des solutions sur mesure",
+    cv_label: 'T\u00E9l\u00E9charger mon CV'
+});
 
-const burger = document.querySelector('.burger');
-const navMenu = document.querySelector('.nav-menu');
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = themeToggle.querySelector('img');
-const projectsList = document.getElementById('projects-list');
-const awardsList = document.getElementById('awards-list');
-const projectCursor = document.getElementById('project-cursor');
-const openLegalButton = document.getElementById('open-legal');
-const legalModal = document.getElementById('legal-modal');
-const legalDialog = legalModal?.querySelector('.legal-dialog');
-const legalContent = document.getElementById('legal-content');
-const legalCloseButton = legalModal?.querySelector('.legal-close');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-let lenis = null;
+Object.assign(copy.en, {
+    hero_line_one: 'I bring',
+    hero_line_two_before: 'your',
+    hero_gradient_word: 'ideas',
+    hero_skill_design: 'design,',
+    hero_skill_code: 'code',
+    hero_skill_3d: '3D, ...',
+    hero_copy: 'Passionate UI/UX and graphic designer with 5+ years of experience in social visuals, web interfaces, 3D and video editing. Blending technical precision and creativity for tailored solutions',
+    cv_label: 'Download my resume'
+});
 
 const projects = [
     {
@@ -307,7 +318,7 @@ const legalNotices = {
             <li>Dribbble: <a href="https://dribbble.com" target="_blank" rel="noreferrer">https://dribbble.com</a></li>
             <li>GSAP Docs & Learning: <a href="https://gsap.com/docs/v3/" target="_blank" rel="noreferrer">https://gsap.com/docs/v3/</a></li>
         </ul>
-        <p>These inspirations were reworked, adapted, and integrated manually in native HTML, CSS, and JavaScript. The website does not directly copy a complete interface from these platforms; they were used for observation, learning, and inspiration.</p>
+        <p>These inspirations were reworked, adapted, and integrated manually in native HTML, CSS, and JavaScript. The website does not directly Portfolio.copy a complete interface from these platforms; they were used for observation, learning, and inspiration.</p>
         <p>The website also uses <strong>Lenis Smooth Scroll</strong>, an open source JavaScript library that improves scrolling fluidity: <a href="https://github.com/darkroomengineering/lenis" target="_blank" rel="noreferrer">https://github.com/darkroomengineering/lenis</a>.</p>
         <h3>Use of Artificial Intelligence</h3>
         <p>Some parts of the project received occasional assistance from artificial intelligence, especially for content rewriting, section structure, and code correction support.</p>
@@ -332,299 +343,8 @@ const legalNotices = {
     `
 };
 
-function translateValue(value) {
-    if (typeof value === 'string') {
-        return value;
-    }
 
-    return value[currentLanguage] || value.fr || value.en || '';
-}
-
-function applyLanguage(language) {
-    document.querySelectorAll('[data-i18n]').forEach((element) => {
-        const key = element.dataset.i18n;
-        if (copy[language][key]) {
-            element.textContent = copy[language][key];
-        }
-    });
-
-    document.documentElement.lang = language;
-    document.getElementById('current-lang').textContent = language.toUpperCase();
-
-    if (projectCursor) {
-        projectCursor.textContent = copy[language].project_cursor;
-    }
-
-    if (legalCloseButton) {
-        legalCloseButton.setAttribute('aria-label', copy[language].legal_close);
-    }
-
-    renderDynamicContent();
-    renderLegalContent(language);
-}
-
-document.getElementById('switcher').addEventListener('click', () => {
-    currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
-    applyLanguage(currentLanguage);
-    localStorage.setItem('language', currentLanguage);
-});
-
-function renderProjects() {
-    const rotations = [-1.8, 2, 0];
-
-    projectsList.innerHTML = projects.map((project, index) => {
-        const rotation = rotations[index % rotations.length];
-        const hoverRotation = rotation === 0 ? rotations[(index + 1) % 2] : 0;
-        const cardClass = project.seeMore ? 'project-card project-card--see-more' : 'project-card';
-        const video = project.video
-            ? `<video class="project-video" src="${project.video}" muted loop playsinline preload="metadata"></video>`
-            : '';
-        const meta = project.seeMore
-            ? `<span class="project-see-label">${copy[currentLanguage].projects_see_more}</span>`
-            : `<div class="project-meta">
-                    <h3 class="project-title">${project.title}<span class="project-arrow" aria-hidden="true"></span></h3>
-                    <p class="project-category">${translateValue(project.category)}</p>
-                </div>`;
-
-        return `<article class="${cardClass}" tabindex="0" style="--project-rotation: ${rotation}deg; --project-hover-rotation: ${hoverRotation}deg;">
-                    <div class="project-preview">
-                        <img src="${project.image}" alt="${project.seeMore ? '' : project.title}">
-                        ${video}
-                        ${project.seeMore ? meta : ''}
-                    </div>
-                    ${project.seeMore ? '' : meta}
-                </article>`;
-    }).join('');
-}
-
-function setupProjectVideos() {
-    document.querySelectorAll('.project-card').forEach((card) => {
-        const video = card.querySelector('.project-video');
-
-        if (!video) {
-            return;
-        }
-
-        const playVideo = () => {
-            video.currentTime = 0;
-            video.play().catch(() => {});
-        };
-
-        const pauseVideo = () => {
-            video.pause();
-            video.currentTime = 0;
-        };
-
-        card.addEventListener('mouseenter', playVideo);
-        card.addEventListener('focus', playVideo);
-        card.addEventListener('mouseleave', pauseVideo);
-        card.addEventListener('blur', pauseVideo);
-    });
-}
-
-function renderAwards() {
-    awardsList.innerHTML = awards.map((award) => {
-        const name = translateValue(award.name);
-        const event = translateValue(award.event);
-        const location = translateValue(award.location);
-
-        return `<article class="award-card" tabindex="0">
-            <div class="award-main">
-                <h3 class="award-name">${name}</h3>
-                <p class="award-event">${event}</p>
-            </div>
-
-            <figure class="award-media">
-                <img src="${award.image}" alt="${name}" onerror="this.hidden = true">
-            </figure>
-
-            <div class="award-details">
-                <p class="award-date">${award.date}</p>
-                <p class="award-location">
-                    <img class="location-icon" src="assets/images/location_icon.svg" alt="" aria-hidden="true">
-                    <span>${location}</span>
-                </p>
-            </div>
-        </article>`;
-    }).join('');
-}
-
-function setupProjectCursor() {
-    if (!window.matchMedia('(pointer: fine)').matches) {
-        return;
-    }
-
-    document.querySelectorAll('.project-card').forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-            projectCursor.classList.add('is-visible');
-        });
-
-        card.addEventListener('mousemove', (event) => {
-            projectCursor.style.left = `${event.clientX}px`;
-            projectCursor.style.top = `${event.clientY}px`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            projectCursor.classList.remove('is-visible');
-        });
-
-        card.addEventListener('focus', () => {
-            projectCursor.classList.remove('is-visible');
-        });
-    });
-}
-
-function setupAwardHoverReaction() {
-    if (!window.matchMedia('(pointer: fine)').matches || prefersReducedMotion.matches) {
-        return;
-    }
-
-    document.querySelectorAll('.award-card').forEach((card) => {
-        card.addEventListener('mousemove', (event) => {
-            const rect = card.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-            card.style.setProperty('--award-cursor-x', `${x.toFixed(2)}%`);
-            card.style.setProperty('--award-cursor-y', `${y.toFixed(2)}%`);
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.setProperty('--award-cursor-x', '50%');
-            card.style.setProperty('--award-cursor-y', '50%');
-        });
-    });
-}
-
-function renderDynamicContent() {
-    renderProjects();
-    setupProjectVideos();
-    setupProjectCursor();
-    renderAwards();
-    setupAwardHoverReaction();
-}
-
-function setupSmoothScroll() {
-    if (!window.Lenis || prefersReducedMotion.matches) {
-        return;
-    }
-
-    lenis = new Lenis({
-        lerp: 0.08,
-        wheelMultiplier: 0.9,
-        touchMultiplier: 1.2
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener('click', (event) => {
-            const targetId = link.getAttribute('href');
-
-            if (!targetId || targetId === '#') {
-                return;
-            }
-
-            const target = document.querySelector(targetId);
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-            lenis.scrollTo(target, { offset: 0 });
-        });
-    });
-}
-
-function renderLegalContent(language = currentLanguage) {
-    if (!legalContent) {
-        return;
-    }
-
-    legalContent.innerHTML = legalNotices[language] || legalNotices.fr;
-}
-
-function openLegalModal() {
-    if (!legalModal || !legalDialog) {
-        return;
-    }
-
-    renderLegalContent(currentLanguage);
-    legalModal.classList.add('open');
-    legalModal.setAttribute('aria-hidden', 'false');
-    lenis?.stop?.();
-    legalDialog.focus();
-}
-
-function closeLegalModal() {
-    if (!legalModal) {
-        return;
-    }
-
-    legalModal.classList.remove('open');
-    legalModal.setAttribute('aria-hidden', 'true');
-    lenis?.start?.();
-    openLegalButton?.focus();
-}
-
-function applyTheme(theme) {
-    const isDark = theme === 'dark';
-
-    document.documentElement.dataset.theme = theme;
-    themeIcon.src = isDark ? 'assets/images/dark.svg' : 'assets/images/light.svg';
-    themeToggle.setAttribute('aria-pressed', String(isDark));
-    themeToggle.setAttribute('aria-label', isDark ? 'Passer en mode clair' : 'Passer en mode sombre');
-    localStorage.setItem('theme', theme);
-}
-
-setupSmoothScroll();
-
-const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
-applyTheme(savedTheme);
-
-burger.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
-    burger.classList.toggle('open', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
-});
-
-themeToggle.addEventListener('click', () => {
-    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-
-    themeToggle.classList.remove('is-animating');
-    void themeToggle.offsetWidth;
-    themeToggle.classList.add('is-animating');
-    applyTheme(nextTheme);
-});
-
-themeToggle.addEventListener('animationend', () => {
-    themeToggle.classList.remove('is-animating');
-});
-
-document.querySelectorAll('.nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-    });
-});
-
-openLegalButton?.addEventListener('click', openLegalModal);
-
-legalModal?.querySelectorAll('[data-close-legal]').forEach((element) => {
-    element.addEventListener('click', closeLegalModal);
-});
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && legalModal?.classList.contains('open')) {
-        closeLegalModal();
-    }
-});
-
-applyLanguage(currentLanguage);
+Portfolio.copy = copy;
+Portfolio.projects = projects;
+Portfolio.awards = awards;
+Portfolio.legalNotices = legalNotices;

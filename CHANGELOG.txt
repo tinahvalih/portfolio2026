@@ -1,5 +1,152 @@
 CHANGELOG
 
+2026-07-15 - early morning
+- Added local Geist and PP Editorial New font files and removed external Google Fonts dependencies.
+
+2026-07-15 - early morning
+- Removed the intermediate hero breakpoint so desktop responsiveness is controlled by the capped fluid stage until mobile.
+
+2026-07-15 - early morning
+- Capped the desktop hero and navbar fluid scaling at a 1920 by 1080 stage for zoomed-out and ultrawide screens.
+
+2026-07-15 - early morning
+- Moved the projects section upward so it overlaps the bottom of the hero portrait.
+
+2026-07-15 - early morning
+- Moved the new hero composition upward so the projects separator can appear at the bottom of the first viewport.
+
+2026-07-15 - early morning
+- Removed the separator from the hero and restored the separator above the projects section.
+
+2026-07-15 - early morning
+- Added a fluid desktop scaling system for the new hero and navbar so their proportions hold across browser zoom levels.
+
+2026-07-15 - early morning
+- Removed the extra CSS rotation from the hero Figma badge and tightened the skill heading line spacing.
+
+2026-07-15 - early morning
+- Enlarged and lowered the hero Figma badge so it overlaps the design heading and visually touches the code line.
+
+2026-07-15 - early morning
+- Reduced the top padding of the new hero content area.
+
+2026-07-15 - early morning
+- Reduced the navbar container height while keeping the existing navigation content.
+
+2026-07-15 - early morning
+- Enlarged the hero Figma badge and overlapped it slightly with the design heading while keeping the portrait layer above it.
+
+2026-07-15 - early morning
+- Matched the hero skill heading typography with the main H1 and moved the Figma icon inline before "design".
+
+2026-07-14 - early morning
+- Tuned the new hero spacing to better match the mockup proportions and margins.
+
+2026-07-14 - early morning
+- Switched the Geist font import to Google Fonts so the font loads correctly.
+
+2026-07-14 - early morning
+- Replaced the old hero with the new portrait-based mockup layout, updated the site gradient to blue, and switched the sans-serif stack to Geist.
+
+2026-07-09 - morning
+- Fixed award hover image stacking so neighboring row dividers no longer overlap the popped image.
+
+2026-07-09 - morning
+- Added a transparent black page overlay that fades in with the footer reveal.
+
+2026-07-09 - morning
+- Delayed the footer overlay reveal so the awards section remains visible longer.
+
+2026-07-09 - morning
+- Removed the projects bottom padding, made the awards separator transparent, and changed the footer into a bottom overlay reveal.
+
+2026-07-09 - morning
+- Reworked the parallax overlap so each section overlaps the previous one independently.
+
+2026-07-08 - morning
+- Reduced the projects section bottom padding and extended the hero overlap parallax to all following sections.
+
+2026-07-08 - morning
+- Removed the separator background so only the separator image remains visible.
+
+2026-07-08 - morning
+- Added a scroll parallax overlap between the hero and projects section.
+
+2026-07-08 - morning
+- Added the CV button-style letter hover animation to the three navigation links.
+
+2026-07-07 - morning
+- Delayed the hero content entrance so it begins near the end of the opening intro animation.
+
+2026-07-07 - morning
+- Fixed the initial CV button hover overlap by releasing entrance animation control after it finishes.
+
+2026-07-07 - morning
+- Fixed CV button word spacing and stopped hero entrance animations from replaying on language change.
+
+2026-07-07 - morning
+- Sequenced the hero entrance animations and fixed CV button word spacing during hover animation.
+
+2026-07-07 - morning
+- Added coordinated hero entrance animations for the eyebrow, gradient image, Figma badge, CV button, social icons, and staggered CV button hover text.
+
+2026-07-07 - morning
+- Kept the hero gradient word intact during text animation so it remains visible and continuous.
+
+2026-07-07 - morning
+- Fixed the hero gradient animation so the gradient flows across the whole word instead of restarting per letter.
+
+2026-07-07 - morning
+- Restored the hero gradient text after the letter animation split wrapped the gradient word.
+
+2026-07-07 - morning
+- Added staggered hero text animation: title by letter and paragraph by word.
+
+2026-07-07 - morning
+- Split the portfolio JavaScript into focused feature files instead of one combined script.
+
+2026-07-07 - morning
+- Limited the intro opener so it plays once per tab session instead of replaying on refresh.
+
+2026-07-07 - morning
+- Made the intro opener colors invert based on the saved light or dark theme.
+
+2026-07-06 - morning
+- Added the square intro reveal animation that opens the website from a dark loading overlay.
+
+2026-06-30 - morning
+- Kept the theme switch icon colors unchanged when navbar contrast changes.
+
+2026-06-30 - morning
+- Added scroll-direction navbar behavior that hides content on scroll down and fades it back in on scroll up while keeping the blur visible.
+
+2026-06-30 - morning
+- Replaced navbar blend-mode readability with a scroll-aware light-section contrast state.
+
+2026-06-30 - morning
+- Made the navbar content adapt against light and dark sections using blend-mode readability.
+
+2026-06-30 - morning
+- Shortened the navbar blur fade so it ends around the middle of the navbar.
+
+2026-06-30 - morning
+- Set the navbar minimum height to 100px and removed the dark gradient overlay behind it.
+
+2026-06-30 - morning
+- Added a progressive blurred backdrop and subtle top dark gradient behind the navbar.
+
+2026-06-30 - morning
+- Fixed clipped gradient text in the awards section title and award hover names.
+
+2026-06-30 - morning
+- Fixed clipped gradient text by relaxing title line-height and adding vertical breathing room to gradient words.
+
+2026-06-30 - morning
+- Expanded the footer logo so it fills the available screen width between page margins.
+
+2026-06-30 - morning
+- Replaced the oversized footer text signature with the Tinah Valiha SVG logo asset.
+
 2026-06-29 - evening
 - Added the footer, translated remaining visible text, and integrated the legal notice as an in-page modal.
 - Removed the mobile hamburger menu open animation.
