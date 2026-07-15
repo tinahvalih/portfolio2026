@@ -125,6 +125,9 @@
     --fluid-action-gap: clamp(16px, 1.3542vw, 30px);
     --stage-w: min(100vw, 1920px);
     --stage-h: min(100vh, 1080px);
+    --section-pad-x: calc(var(--stage-w) * 0.053125);
+    --section-pad-y: calc(var(--stage-w) * 0.055);
+    --section-gap: calc(var(--stage-w) * 0.058333);
 }
 
 :root.intro-seen {
@@ -344,7 +347,7 @@ button {
     align-items: center;
     justify-content: space-between;
     gap: clamp(18px, 3vw, 48px);
-    min-height: 100px;
+    min-height: 124px;
     padding: 0 var(--page-pad);
     opacity: 1;
     transform: translateY(0);
@@ -387,10 +390,6 @@ button {
 .site-header.is-on-light .nav-link,
 .site-header.is-on-light .language-button {
     color: var(--dark);
-}
-
-.site-header.is-on-light .chevron {
-    border-color: currentColor;
 }
 
 .site-header.is-on-light .burger {
@@ -503,32 +502,11 @@ button {
     font-weight: 500;
 }
 
-.flag-fr {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.language-icon {
+    display: block;
     width: 32px;
-    height: 24px;
-    overflow: hidden;
-}
-
-.flag-fr span:nth-child(1) {
-    background: #07145c;
-}
-
-.flag-fr span:nth-child(2) {
-    background: #ffffff;
-}
-
-.flag-fr span:nth-child(3) {
-    background: #ef2438;
-}
-
-.chevron {
-    width: 12px;
-    height: 12px;
-    border-right: 3px solid currentColor;
-    border-bottom: 3px solid currentColor;
-    transform: translateY(-3px) rotate(45deg);
+    height: auto;
+    flex: 0 0 auto;
 }
 
 .theme-toggle {
@@ -646,7 +624,7 @@ h1 {
     max-width: fit-content;
     color: var(--text-primary);
     font-size: clamp(56px, 5.8vw, 112px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.08em;
     line-height: 0;
 }
@@ -879,7 +857,6 @@ h1 {
 
 .hero-copy {
     max-width: 970px;
-    margin-top: clamp(4px, 1vw, 11px);
     color: var(--text-muted);
     font-size: clamp(14px, 1.1vw, 22px);
     font-weight: 200;
@@ -990,25 +967,40 @@ main > section:not(.hero) {
     will-change: transform;
 }
 
+.stage-section {
+    width: var(--stage-w);
+    margin-inline: auto;
+    padding-inline: var(--section-pad-x);
+}
+
+.stage-section--spaced {
+    padding-block: var(--section-pad-y);
+}
+
 .section-separator {
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .section-separator img {
     display: block;
-    width: 100%;
+    width: var(--stage-w);
+    max-width: none;
     height: auto;
 }
 
 .projects-scroll-layer {
     position: relative;
     z-index: 5;
-    margin-top: clamp(-140px, -6.25vw, -82px);
+    margin-top: calc(var(--stage-w) * -0.096);
 }
 
 .projects-section {
-    padding: clamp(32px, 3vw, 72px) var(--page-pad) 0;
+    width: var(--stage-w);
+    margin-inline: auto;
+    padding: calc(var(--stage-w) * 0.03) var(--section-pad-x) 0;
     background: var(--page-bg);
     position: relative;
     z-index: 2;
@@ -1017,8 +1009,8 @@ main > section:not(.hero) {
 .projects-layout {
     display: grid;
     grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.18fr);
-    column-gap: clamp(44px, 6vw, 112px);
-    row-gap: clamp(42px, 5vw, 84px);
+    column-gap: var(--section-gap);
+    row-gap: calc(var(--stage-w) * 0.04375);
     align-items: start;
 }
 
@@ -1034,7 +1026,7 @@ main > section:not(.hero) {
 .projects-intro h2 {
     color: var(--text-primary);
     font-size: clamp(58px, 5.3vw, 102px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.08em;
     line-height: 0.82;
 }
@@ -1225,7 +1217,7 @@ main > section:not(.hero) {
     position: relative;
     overflow: hidden;
     background: transparent;
-    padding-bottom: clamp(96px, 9vw, 176px);
+    padding-bottom: calc(var(--stage-w) * 0.091667);
 }
 
 .awards-separator {
@@ -1239,11 +1231,14 @@ main > section:not(.hero) {
 
 .awards-separator img {
     display: block;
-    width: 100%;
+    width: var(--stage-w);
+    max-width: none;
     height: auto;
 }
 
 .awards-header {
+    width: var(--stage-w);
+    margin-inline: auto;
     position: relative;
     z-index: 1;
     display: grid;
@@ -1251,14 +1246,14 @@ main > section:not(.hero) {
     min-height: clamp(170px, 17vw, 310px);
     /* Make the margin top around 32px */
     margin-top: clamp(-100px, -6.2vw, -132px);
-    padding: 0 var(--page-pad) clamp(38px, 5vw, 86px);
+    padding: 0 var(--section-pad-x) calc(var(--stage-w) * 0.044792);
     text-align: center;
 }
 
 .awards-header h2 {
     color: var(--text-primary);
     font-size: clamp(72px, 8vw, 154px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.08em;
     line-height: 0.9;
     overflow: visible;
@@ -1270,6 +1265,8 @@ main > section:not(.hero) {
 }
 
 .awards-list {
+    width: var(--stage-w);
+    margin-inline: auto;
     overflow: visible;
     background: var(--page-bg);
     color: var(--text-primary);
@@ -1284,7 +1281,7 @@ main > section:not(.hero) {
     align-items: center;
     gap: clamp(28px, 4.8vw, 92px);
     height: clamp(160px, 12vw, 212px);
-    padding: 0 var(--page-pad);
+    padding: 0 var(--section-pad-x);
     overflow: visible;
     isolation: isolate;
     outline: 0;
@@ -1506,7 +1503,7 @@ main > section:not(.hero) {
     left: 0;
     z-index: 70;
     overflow: hidden;
-    padding: clamp(78px, 8vw, 150px) var(--page-pad) 0;
+    padding: calc(var(--stage-w) * 0.078125) max(var(--section-pad-x), calc((100vw - var(--stage-w)) / 2 + var(--section-pad-x))) 0;
     background: var(--dark2);
     color: var(--white);
     transform: translate3d(0, var(--footer-reveal-y, 100%), 0);
@@ -1766,9 +1763,8 @@ main > section:not(.hero) {
         gap: 8px;
     }
 
-    .flag-fr {
+    .language-icon {
         width: 38px;
-        height: 26px;
     }
 
     .burger {
@@ -1918,7 +1914,7 @@ main > section:not(.hero) {
     position: relative;
     z-index: 3;
     width: calc(var(--stage-w) * 0.41);
-    padding-top: calc(var(--stage-w) * 0.072);
+    padding-top: calc(var(--stage-w) * 0.1);
 }
 
 .hero--new .hero-eyebrow {
@@ -1933,7 +1929,7 @@ main > section:not(.hero) {
     max-width: 100%;
     color: var(--dark);
     font-size: calc(var(--stage-w) * 0.067188);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.065em;
     line-height: 0.88;
 }
@@ -1947,7 +1943,6 @@ main > section:not(.hero) {
 
 .hero--new .hero-copy {
     max-width: calc(var(--stage-w) * 0.30);
-    margin-top: calc(var(--stage-w) * 0.010417);
     color: var(--dark);
     font-size: calc(var(--stage-w) * 0.013542);
     font-weight: 300;
@@ -2014,7 +2009,7 @@ main > section:not(.hero) {
 .hero--new .hero-skill-line {
     color: var(--dark);
     font-size: calc(var(--stage-w) * 0.067188);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.065em;
     line-height: 0;
 }
@@ -2027,6 +2022,29 @@ main > section:not(.hero) {
 
 .hero--new .hero-skill-line .gradient-word {
     font-size: 1.12em;
+}
+
+:root[data-theme="dark"] .hero--new {
+    background: var(--dark);
+    color: var(--white);
+}
+
+:root[data-theme="dark"] .hero--new .hero-eyebrow,
+:root[data-theme="dark"] .hero--new h1,
+:root[data-theme="dark"] .hero--new .hero-copy,
+:root[data-theme="dark"] .hero--new .hero-skill-line {
+    color: var(--white);
+}
+
+:root[data-theme="dark"] .hero--new .cv-button {
+    border-color: rgba(255, 255, 255, 0.88);
+    color: var(--white);
+}
+
+:root[data-theme="dark"] .hero--new .cv-button:hover,
+:root[data-theme="dark"] .hero--new .cv-button:focus-visible {
+    background: var(--white);
+    color: var(--dark);
 }
 
 .hero--new .figma-badge {
@@ -2068,7 +2086,7 @@ main > section:not(.hero) {
 .nav {
     width: var(--stage-w);
     margin-inline: auto;
-    min-height: calc(var(--stage-w) * 0.048);
+    min-height: calc(var(--stage-w) * 0.058);
     padding-inline: calc(var(--stage-w) * 0.053125);
     gap: calc(var(--stage-w) * 0.025);
 }
@@ -2099,17 +2117,8 @@ main > section:not(.hero) {
     font-size: calc(var(--stage-w) * 0.009375);
 }
 
-.flag-fr {
+.language-icon {
     width: calc(var(--stage-w) * 0.016667);
-    height: calc(var(--stage-w) * 0.0125);
-}
-
-.chevron {
-    width: calc(var(--stage-w) * 0.00625);
-    height: calc(var(--stage-w) * 0.00625);
-    border-right-width: calc(var(--stage-w) * 0.001563);
-    border-bottom-width: calc(var(--stage-w) * 0.001563);
-    transform: translateY(calc(var(--stage-w) * -0.001563)) rotate(45deg);
 }
 
 .theme-toggle {
@@ -2212,7 +2221,7 @@ main > section:not(.hero) {
         gap: 6px;
     }
 
-    .flag-fr {
+    .language-icon {
         display: none;
     }
 

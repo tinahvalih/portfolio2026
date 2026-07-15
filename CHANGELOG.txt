@@ -1,5 +1,14 @@
 CHANGELOG
 
+2026-07-16 - morning
+- Added dark mode styling for the new hero section while preserving gradient text and imagery.
+
+2026-07-16 - morning
+- Increased the navbar height, moved the projects section further over the hero portrait, and extended the capped stage responsive system to current and future sections.
+
+2026-07-15 - late morning
+- Replaced the CSS language flag and chevron with the provided French and English PNG language icons.
+
 2026-07-15 - early morning
 - Added local Geist and PP Editorial New font files and removed external Google Fonts dependencies.
 

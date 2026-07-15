@@ -16,6 +16,10 @@ function applyLanguage(language, options = {}) {
 
     document.documentElement.lang = language;
     document.getElementById('current-lang').textContent = language.toUpperCase();
+    const languageIcon = document.getElementById('language-icon');
+    if (languageIcon) {
+        languageIcon.src = language === 'fr' ? 'assets/images/french.png' : 'assets/images/english.png';
+    }
 
     if (Portfolio.dom.projectCursor) {
         Portfolio.dom.projectCursor.textContent = Portfolio.copy[language].project_cursor;
