@@ -1,6 +1,15 @@
 CHANGELOG
 
 2026-07-16 - morning
+- Changed the desktop hero stage height to follow the capped 16:9 ratio so projects remain visible on 16:10 and near-square screens.
+
+2026-07-16 - morning
+- Removed the dissolve transition from theme color changes so light and dark mode switch instantly.
+
+2026-07-16 - morning
+- Added the dark hero portrait asset to the theme switch so the portrait changes with dark mode.
+
+2026-07-16 - morning
 - Added dark mode styling for the new hero section while preserving gradient text and imagery.
 
 2026-07-16 - morning
