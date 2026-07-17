@@ -1,5 +1,12 @@
 CHANGELOG
 
+2026-07-17 - morning
+- Rebuilt the mobile hero layout to match the supplied landing page mockup.
+- Adjusted the mobile portrait and skill-text placement so the hero image matches the mockup composition more closely.
+- Tightened the mobile hero scale so the landing content fits in the initial mobile frame.
+- Reduced the mobile navbar and hero element sizes so the full landing block fits in one viewport.
+- Added more mobile hero bottom padding and oversized the project separator image for a cropped transition.
+
 2026-07-16 - morning
 - Changed the desktop hero stage height to follow the capped 16:9 ratio so projects remain visible on 16:10 and near-square screens.
 
