@@ -641,26 +641,16 @@ h1 {
     vertical-align: baseline;
 }
 
-.hero-letter,
-.hero-word {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: heroTextStagger 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    animation-delay: calc(var(--stagger) * 30ms);
-    will-change: opacity, transform;
+.hero-wipe-reveal {
+    clip-path: inset(0 100% 0 0);
+    animation: heroWipeReveal 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--hero-intro-delay) + 720ms + var(--wipe-index, 0) * 130ms);
+    will-change: clip-path;
 }
 
-.hero-eyebrow .hero-letter {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 24ms + 720ms);
-}
-
-.cv-button .hero-letter {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 18ms + 1820ms);
-}
-
-.hero-word {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 45ms + 1420ms);
+.hero-wipe-static {
+    clip-path: inset(0 0 0 0);
+    animation: none;
 }
 
 .hero-text-static {
@@ -669,27 +659,28 @@ h1 {
     animation: none;
 }
 
+.hero-wipe-line {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.hero-copy .hero-wipe-line {
+    display: block;
+    width: max-content;
+    white-space: nowrap;
+}
+
 .figma-badge {
     animation: heroBadgeEntrance 640ms cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--hero-intro-delay) + 1180ms) both;
 }
 
-.hero-gradient-unit {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 30ms + 1040ms);
-}
-
-#hero-title .hero-letter {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 30ms + 1040ms);
-}
-
-@keyframes heroTextStagger {
+@keyframes heroWipeReveal {
     0% {
-        opacity: 0;
-        transform: translateY(50px);
+        clip-path: inset(0 100% 0 0);
     }
 
     100% {
-        opacity: 1;
-        transform: translateY(0);
+        clip-path: inset(0 0 0 0);
     }
 }
 
@@ -718,14 +709,14 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-letter,
-    .hero-word {
-        opacity: 1;
-        transform: none;
+    .hero-wipe-reveal,
+    .hero-wipe-static {
+        clip-path: inset(0 0 0 0);
         animation: none;
     }
 
     .hero-gradient,
+    .hero-portrait,
     .figma-badge,
     .cv-button,
     .social-links a {
@@ -778,15 +769,15 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     transform-origin: right center;
-    animation: cvButtonReveal 720ms var(--ease) calc(var(--hero-intro-delay) + 1760ms) both;
+    clip-path: inset(0 100% 0 0);
     transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .cv-button:hover,
 .cv-button:focus-visible {
-    background: var(--button-hover-bg);
+    background: var(--dark);
     color: var(--button-hover-text);
-    transform: translateY(-2px);
+    transform: none;
 }
 
 .cv-button [data-i18n="cv_label"] {
@@ -796,6 +787,7 @@ h1 {
 }
 
 .cv-button [data-i18n="cv_label"] > .hero-letter {
+    display: inline-block;
     transition: transform 280ms var(--ease);
     transition-delay: calc(var(--stagger) * 12ms);
 }
@@ -828,18 +820,6 @@ h1 {
 .cv-button:hover .cv-hover-letter,
 .cv-button:focus-visible .cv-hover-letter {
     transform: translateY(-100%);
-}
-
-@keyframes cvButtonReveal {
-    0% {
-        clip-path: inset(0 0 0 100%);
-        opacity: 0;
-    }
-
-    100% {
-        clip-path: inset(0 0 0 0);
-        opacity: 1;
-    }
 }
 
 .arrow {
@@ -1699,6 +1679,28 @@ main > section:not(.hero) {
         padding-top: 0;
     }
 
+    .projects-intro h2 {
+        max-width: min(100%, 1040px);
+        margin-inline: auto;
+        font-size: clamp(38px, 8.7vw, 100px);
+        line-height: 0.92;
+    }
+
+    .projects-intro h2 br:nth-of-type(1),
+    .projects-intro h2 br:nth-of-type(3) {
+        display: none;
+    }
+
+    .projects-intro h2 br:nth-of-type(2) {
+        display: block;
+    }
+
+    .projects-title-accent {
+        margin-left: -0.08em;
+        white-space: nowrap;
+        transform: rotate(-4.3deg) translateY(0.05em);
+    }
+
     .award-card {
         grid-template-columns: 1fr;
         height: auto;
@@ -1823,7 +1825,8 @@ main > section:not(.hero) {
     }
 
     .projects-intro h2 {
-        font-size: clamp(50px, 15vw, 82px);
+        font-size: clamp(34px, 9vw, 74px);
+        line-height: 0.94;
     }
 
     .project-card:nth-child(2n + 1) {
@@ -1988,6 +1991,8 @@ main > section:not(.hero) {
     height: auto;
     pointer-events: none;
     user-select: none;
+    transform-origin: 52% 42%;
+    animation: heroPortraitZoomOut 1100ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--hero-intro-delay) + 520ms) both;
 }
 
 .hero-skill-lockup {
@@ -2017,6 +2022,10 @@ main > section:not(.hero) {
 
 .hero--new .hero-skill-line .gradient-word {
     font-size: 1.12em;
+}
+
+.hero--new .hero-skill-line .hero-wipe-line {
+    line-height: 0.86;
 }
 
 :root[data-theme="dark"] .hero--new {
@@ -2049,23 +2058,25 @@ main > section:not(.hero) {
     width: calc(var(--stage-w) * 0.08125);
     margin: 0 calc(var(--stage-w) * -0.025) -0.3em 0;
     flex: 0 0 auto;
-    animation: heroBadgeEntranceNew 640ms cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--hero-intro-delay) + 1180ms) both;
-}
-
-.hero--new .hero-gradient-unit,
-.hero--new #hero-title .hero-letter {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 30ms + 1040ms);
-}
-
-.hero--new .hero-skill-line .hero-letter,
-.hero--new .hero-skill-line .hero-gradient-unit {
-    animation-delay: calc(var(--hero-intro-delay) + var(--stagger) * 24ms + 1500ms);
+    animation: heroBadgeEntranceNew 720ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--hero-intro-delay) + 1040ms) both;
 }
 
 @keyframes heroBadgeEntranceNew {
     0% {
         opacity: 0;
         transform: scale(0.72);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heroPortraitZoomOut {
+    0% {
+        opacity: 0;
+        transform: scale(1.12);
     }
 
     100% {

@@ -1,5 +1,6 @@
 Portfolio.setupSmoothScroll();
 Portfolio.setupSectionParallax();
+Portfolio.preloadThemeAssets();
 
 const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
 Portfolio.applyTheme(savedTheme);

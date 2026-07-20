@@ -1,5 +1,15 @@
 CHANGELOG
 
+2026-07-20 - morning
+- Changed the projects section heading to a two-line tablet and mobile layout.
+- Preloaded the light and dark hero portrait assets so theme switching updates the portrait without a visible delay.
+- Added a zoom-out entrance animation to the hero portrait.
+- Replaced the hero stagger text entrance with a block-level wipe reveal mask.
+- Changed the hero wipe reveal to run line by line with a short delay between lines.
+- Synced the skill text wipe with the H1, separated the Figma badge zoom, removed CTA hover lift, and delayed the portrait entrance.
+- Fixed the skill text wipe wrapper, switched the CTA entrance to wipe reveal, and made hover fill visible in both themes.
+- Fixed the skill text wipe line-height so the design label remains visible.
+
 2026-07-17 - morning
 - Rebuilt the mobile hero layout to match the supplied landing page mockup.
 - Adjusted the mobile portrait and skill-text placement so the hero image matches the mockup composition more closely.

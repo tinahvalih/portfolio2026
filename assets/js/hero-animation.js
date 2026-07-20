@@ -165,19 +165,212 @@ function releaseCvButtonEntrance() {
     });
 }
 
+function unwrapWipeLines(element) {
+    element?.querySelectorAll('.hero-wipe-line').forEach((line) => {
+        line.replaceWith(...Array.from(line.childNodes));
+    });
+}
+
+function applyWipeReveal(element, index, options = {}) {
+    if (!element) {
+        return;
+    }
+
+    element.classList.remove('hero-wipe-reveal', 'hero-wipe-static');
+    element.style.setProperty('--wipe-index', index);
+
+    if (options.noEntrance) {
+        element.classList.add('hero-wipe-static');
+        return;
+    }
+
+    void element.offsetWidth;
+    element.classList.add('hero-wipe-reveal');
+}
+
+function applyWipeLineReveal(line, index, options = {}) {
+    line.classList.remove('hero-wipe-reveal', 'hero-wipe-static');
+    line.style.setProperty('--wipe-index', index);
+
+    if (options.noEntrance) {
+        line.classList.add('hero-wipe-static');
+        return;
+    }
+
+    void line.offsetWidth;
+    line.classList.add('hero-wipe-reveal');
+}
+
+function wrapHardBreakLines(element) {
+    if (!element) {
+        return [];
+    }
+
+    unwrapWipeLines(element);
+
+    const nodes = Array.from(element.childNodes);
+    const fragment = document.createDocumentFragment();
+    const lines = [];
+    let lineNodes = [];
+
+    function flushLine() {
+        const line = document.createElement('span');
+        line.className = 'hero-wipe-line';
+        lineNodes.forEach((node) => line.appendChild(node));
+        fragment.appendChild(line);
+        lines.push(line);
+        lineNodes = [];
+    }
+
+    nodes.forEach((node) => {
+        if (node.nodeName === 'BR') {
+            flushLine();
+            fragment.appendChild(node);
+            return;
+        }
+
+        lineNodes.push(node);
+    });
+
+    if (lineNodes.length) {
+        flushLine();
+    }
+
+    element.appendChild(fragment);
+    return lines;
+}
+
+function extractFigmaBadgeFromLine(line) {
+    const badge = line.querySelector('.figma-badge');
+
+    if (!badge) {
+        return;
+    }
+
+    line.parentNode.insertBefore(badge, line);
+}
+
+function wrapSkillLines(element) {
+    if (!element) {
+        return [];
+    }
+
+    unwrapWipeLines(element);
+
+    const lines = [];
+    const titleLine = element.querySelector('.hero-skill-title-line');
+
+    if (titleLine) {
+        const badge = titleLine.querySelector('.figma-badge');
+        const line = document.createElement('span');
+        line.className = 'hero-wipe-line';
+
+        Array.from(titleLine.childNodes).forEach((node) => {
+            if (node === badge || node.contains?.(badge)) {
+                return;
+            }
+
+            line.appendChild(node);
+        });
+
+        if (badge) {
+            titleLine.append(badge, line);
+        } else {
+            titleLine.appendChild(line);
+        }
+
+        lines.push(line);
+    }
+
+    Array.from(element.childNodes).forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) {
+            return;
+        }
+
+        if (node.nodeName === 'BR' || node.classList?.contains('hero-skill-title-line')) {
+            return;
+        }
+
+        const line = document.createElement('span');
+        line.className = 'hero-wipe-line';
+
+        while (node && node.parentNode === element && node.nodeName !== 'BR') {
+            const next = node.nextSibling;
+            line.appendChild(node);
+            node = next;
+        }
+
+        if (line.childNodes.length) {
+            element.appendChild(line);
+            lines.push(line);
+        }
+    });
+
+    return lines;
+}
+
+function wrapMeasuredTextLines(element) {
+    if (!element) {
+        return [];
+    }
+
+    const text = element.textContent.replace(/\s+/g, ' ').trim();
+
+    if (!text) {
+        return [];
+    }
+
+    element.textContent = '';
+
+    const words = text.split(' ');
+    const lines = [];
+    let line = document.createElement('span');
+    line.className = 'hero-wipe-line';
+    element.appendChild(line);
+    lines.push(line);
+
+    words.forEach((word) => {
+        const probe = line.textContent ? `${line.textContent} ${word}` : word;
+        const previous = line.textContent;
+        line.textContent = probe;
+        line.style.whiteSpace = 'nowrap';
+
+        if (line.scrollWidth > element.clientWidth && previous) {
+            line.textContent = previous;
+            element.appendChild(document.createTextNode(' '));
+            line = document.createElement('span');
+            line.className = 'hero-wipe-line';
+            line.textContent = word;
+            line.style.whiteSpace = 'nowrap';
+            element.appendChild(line);
+            lines.push(line);
+        }
+    });
+
+    return lines;
+}
+
 function animateHeroText(options = {}) {
     prepareNavLinkHover();
-    splitElementText(document.getElementById('hero-title'), 'chars', options);
-    splitElementText(document.querySelector('.hero-skill-line'), 'chars', options);
-    splitElementText(document.querySelector('.hero-eyebrow'), 'chars', options);
-    splitElementText(document.querySelector('.hero-copy'), 'words', options);
+    const revealLines = [];
+    revealLines.push(...wrapHardBreakLines(document.querySelector('.hero-eyebrow')).map((line, offset) => ({ line, index: offset })));
+    revealLines.push(...wrapHardBreakLines(document.getElementById('hero-title')).map((line, offset) => ({ line, index: 1 + offset })));
+    revealLines.push(...wrapMeasuredTextLines(document.querySelector('.hero-copy')).map((line, offset) => ({ line, index: 3 + offset })));
+
+    wrapSkillLines(document.querySelector('.hero-skill-line')).forEach((line, offset) => {
+        revealLines.push({ line, index: 1 + offset });
+    });
+
+    revealLines.forEach(({ line, index }) => {
+        applyWipeLineReveal(line, index, options);
+    });
     splitElementText(document.querySelector('.cv-button [data-i18n="cv_label"]'), 'chars', {
         wrapSpaces: true,
         spaceClass: 'cv-label-space',
-        noEntrance: Boolean(options.noEntrance)
+        noEntrance: true
     });
+    applyWipeReveal(document.querySelector('.cv-button'), 6, options);
     prepareCvButtonHover();
-    releaseCvButtonEntrance();
 }
 
 Portfolio.animateHeroText = animateHeroText;
