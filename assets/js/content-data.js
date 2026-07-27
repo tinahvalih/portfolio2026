@@ -143,8 +143,8 @@ const awards = [
             en: 'Graduation Ceremony (ASCENDA Class)'
         },
         location: {
-            fr: 'EMIT Fianarantsoa (ASCENDA)',
-            en: 'EMIT Fianarantsoa (ASCENDA)'
+            fr: 'EMIT Fianarantsoa',
+            en: 'EMIT Fianarantsoa'
         },
         image: 'assets/images/awards/1-major.webp'
     },

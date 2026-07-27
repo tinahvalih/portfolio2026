@@ -17,10 +17,7 @@ function renderAwards() {
 
             <div class="award-details">
                 <p class="award-date">${award.date}</p>
-                <p class="award-location">
-                    <img class="location-icon" src="assets/images/location_icon.svg" alt="" aria-hidden="true">
-                    <span>${location}</span>
-                </p>
+                <p class="award-location">${location}</p>
             </div>
             <span class="award-divider award-divider--bottom" aria-hidden="true"></span>
         </article>`;

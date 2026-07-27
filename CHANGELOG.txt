@@ -1,5 +1,14 @@
 CHANGELOG
 
+2026-07-27 - morning
+- Removed the location icon from award cards and simplified the award location text layout.
+
+2026-07-26 - morning
+- Adjusted the mobile hero navbar, portrait, skill lockup, heading, CTA, and social spacing to match the supplied mobile mockup more closely.
+- Rebalanced the awards section layout for the current fluid responsive system, including separator overlap, card sizing, hover stacking, and touch-friendly award images.
+- Made award cards more compact, reduced their text scale, and inverted hover fill/text colors between light and dark themes.
+- Set desktop and tablet award rows to an actual 96px height while keeping mobile award cards content-driven.
+
 2026-07-20 - morning
 - Changed the projects section heading to a two-line tablet and mobile layout.
 - Preloaded the light and dark hero portrait assets so theme switching updates the portrait without a visible delay.
